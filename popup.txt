@@ -1,2 +1,0 @@
-Pembayaran Non-tunai (title)
-Sebuah web berisi metode pembayaran QRIS maupun DANA secara langsung. Akses web ini untuk melakukan pembayaran non-tunai. (desc)

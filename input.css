@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-zinc-950 font-body text-zinc-100 antialiased overflow-x-clip;
+    }
+    ::selection {
+        @apply bg-orange-300 text-zinc-950;
+    }
+    a:focus-visible,
+    button:focus-visible {
+        outline: 2px solid #fbbf24;
+        outline-offset: 2px;
+    }
+}
+
+@keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.animate-fade-up {
+    animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.js .reveal {
+    opacity: 0;
+}
+
+.js .reveal.is-visible {
+    animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .animate-float {
+        animation: none !important;
+        opacity: 1 !important;
+    }
+}

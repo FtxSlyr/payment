@@ -6,13 +6,13 @@
     <title>Pembayaran Non-tunai</title>
     <meta name="description" content="Sebuah web berisi metode pembayaran QRIS maupun DANA secara langsung. Akses web ini untuk melakukan pembayaran non-tunai.">
     <meta name="theme-color" content="#09090b">
-    <link rel="icon" href="webicon.png" type="image/png">
-    <link rel="apple-touch-icon" href="webicon.png">
+    <link rel="icon" href="webicon.webp" type="image/webp">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hanifpay.netlify.app/">
     <meta property="og:title" content="Pembayaran Non-tunai">
     <meta property="og:description" content="Sebuah web berisi metode pembayaran QRIS maupun DANA secara langsung. Akses web ini untuk melakukan pembayaran non-tunai.">
-    <meta property="og:image" content="https://hanifpay.netlify.app/webicon.png">
+    <meta property="og:image" content="https://hanifpay.netlify.app/webicon.webp">
     <meta property="og:image:width" content="500">
     <meta property="og:image:height" content="500">
     <meta property="og:image:alt" content="Pembayaran Non-tunai">
@@ -20,73 +20,16 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Pembayaran Non-tunai">
     <meta name="twitter:description" content="Sebuah web berisi metode pembayaran QRIS maupun DANA secara langsung. Akses web ini untuk melakukan pembayaran non-tunai.">
-    <meta name="twitter:image" content="https://hanifpay.netlify.app/webicon.png">
+    <meta name="twitter:image" content="https://hanifpay.netlify.app/webicon.webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        body: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-                        display: ['"Space Grotesk"', 'ui-sans-serif', 'sans-serif'],
-                        popup: ['Outfit', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-                    },
-                },
-            },
-        };
-    </script>
-    <style type="text/tailwindcss">
-        @layer base {
-            body {
-                @apply bg-zinc-950 font-body text-zinc-100 antialiased overflow-x-clip;
-            }
-            ::selection {
-                @apply bg-orange-300 text-zinc-950;
-            }
-            a:focus-visible,
-            button:focus-visible {
-                outline: 2px solid #fbbf24;
-                outline-offset: 2px;
-            }
-        }
-    </style>
-    <style>
-        @keyframes fadeUp {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-        .animate-fade-up {
-            animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
-        }
-        .js .reveal {
-            opacity: 0;
-        }
-        .js .reveal.is-visible {
-            animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .reveal,
-            .animate-float {
-                animation: none !important;
-                opacity: 1 !important;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <script>document.documentElement.classList.add('js');</script>
 </head>
 <body class="relative min-h-screen">
     <div class="pointer-events-none fixed inset-0" aria-hidden="true">
-        <img src="anby.png" alt="" class="h-full w-full object-cover object-top blur-[2px]">
+        <img src="anby.webp" alt="" class="h-full w-full object-cover object-top blur-[2px]">
         <div class="absolute inset-0 bg-zinc-950/70"></div>
     </div>
     <div class="pointer-events-none fixed inset-0" aria-hidden="true">
@@ -102,7 +45,7 @@
         </header>
 
         <button id="qris-btn" class="reveal group animate-float outline-none" style="animation-delay: 0.15s" aria-label="Buka QRIS dalam ukuran penuh" aria-haspopup="dialog">
-            <img src="QRIS.jpg" alt="Kode pembayaran QRIS"
+            <img src="QRIS.jpg" alt="Kode pembayaran QRIS" fetchpriority="high"
                  class="w-[78vw] max-w-sm aspect-[420/592] rounded-[28px] object-cover shadow-2xl shadow-orange-500/20 ring-1 ring-white/10 transition duration-300 group-hover:scale-[1.03] group-hover:shadow-orange-400/40 group-active:scale-95 sm:h-80 sm:w-auto">
         </button>
 
@@ -149,7 +92,7 @@
     </div>
 
     <div id="welcome-popup" class="fixed inset-0 z-[60] hidden items-center justify-center bg-zinc-950/80 p-5 backdrop-blur-md" role="dialog" aria-modal="true" aria-label="Pesan sambutan">
-        <div class="w-full max-w-sm animate-fade-up rounded-3xl border border-white/10 bg-[#0e0e12] p-8 text-center font-popup shadow-2xl shadow-orange-500/10">
+        <div class="w-full max-w-sm animate-fade-up rounded-3xl border border-white/10 bg-[#0e0e12] p-8 text-center font-display shadow-2xl shadow-orange-500/10">
             <p class="text-2xl font-bold leading-snug sm:text-[1.7rem]">Terima kasih telah menggunakan OMU!</p>
             <div class="mt-6 space-y-3 py-6">
                 <p class="text-xl font-bold sm:text-2xl">⚡S0 HANIF⚡</p>
@@ -166,42 +109,88 @@
 
     <script>
         (function () {
+            var POPUP_SEEN_KEY = 'hanifpay-popup-seen';
+            var storage = (function () {
+                try { localStorage.setItem('__t', '1'); localStorage.removeItem('__t'); return localStorage; }
+                catch (e) { return null; }
+            })();
             var btn = document.getElementById('qris-btn');
             var lightbox = document.getElementById('lightbox');
             var closeBtn = document.getElementById('lightbox-close');
             var content = document.getElementById('lightbox-content');
+            var popup = document.getElementById('welcome-popup');
+            var popupBtn = document.getElementById('popup-btn');
 
-            var open = function () {
+            var focusables = function (root) {
+                return Array.prototype.slice.call(
+                    root.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')
+                ).filter(function (el) { return el.offsetParent !== null; });
+            };
+
+            var openLightbox = function () {
                 lightbox.classList.remove('hidden');
                 document.body.style.overflow = 'hidden';
                 closeBtn.focus();
             };
-            var close = function () {
+            var closeLightbox = function () {
                 lightbox.classList.add('hidden');
                 document.body.style.overflow = '';
                 btn.focus();
             };
 
-            btn.addEventListener('click', open);
-            closeBtn.addEventListener('click', close);
-            content.addEventListener('click', close);
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) close();
-            });
+            var closePopup = function () {
+                popup.classList.add('hidden');
+                popup.classList.remove('flex');
+                document.body.style.overflow = '';
+                if (storage) storage.setItem(POPUP_SEEN_KEY, '1');
+                btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                btn.focus();
+            };
 
-            var popup = document.getElementById('welcome-popup');
-            var popupBtn = document.getElementById('popup-btn');
+            btn.addEventListener('click', openLightbox);
+            closeBtn.addEventListener('click', closeLightbox);
+            content.addEventListener('click', closeLightbox);
+
             if (popup && popupBtn) {
-                popup.classList.remove('hidden');
-                popup.classList.add('flex');
-                document.body.style.overflow = 'hidden';
-                popupBtn.addEventListener('click', function () {
-                    popup.classList.add('hidden');
-                    popup.classList.remove('flex');
-                    document.body.style.overflow = '';
-                    document.getElementById('qris-btn').scrollIntoView({ behavior: 'smooth', block: 'center' });
-                });
+                if (storage && storage.getItem(POPUP_SEEN_KEY)) {
+                    popup.remove();
+                } else {
+                    popup.classList.remove('hidden');
+                    popup.classList.add('flex');
+                    document.body.style.overflow = 'hidden';
+                    popupBtn.focus();
+                    popupBtn.addEventListener('click', closePopup);
+                    popup.addEventListener('click', function (e) {
+                        if (e.target === popup) closePopup();
+                    });
+                }
             }
+
+            document.addEventListener('keydown', function (e) {
+                var open = null;
+                if (!lightbox.classList.contains('hidden')) open = lightbox;
+                else if (popup && !popup.classList.contains('hidden')) open = popup;
+
+                if (!open) return;
+
+                if (e.key === 'Escape') {
+                    if (open === lightbox) closeLightbox();
+                    else closePopup();
+                    return;
+                }
+
+                if (e.key !== 'Tab') return;
+                var items = focusables(open);
+                if (!items.length) return;
+                var first = items[0], last = items[items.length - 1];
+                if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                } else if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            });
 
             if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                 document.documentElement.classList.remove('js');
