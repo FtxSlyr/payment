@@ -1,11 +1,2 @@
-Terima kasih telah menggunakan OMU!
-
-BOLD TEXT {
-⚡S0 HANIF⚡
-🇮🇩BEAT MERAH PUTIH
-🛵BG 2770 HAB
-}
-
-Note : Pembayaran non-tunai ada admin +1k ya, Kak.
-
-(button)Bayar Cashless
+Pembayaran Non-tunai (title)
+Sebuah web berisi metode pembayaran QRIS maupun DANA secara langsung. Akses web ini untuk melakukan pembayaran non-tunai. (desc)
