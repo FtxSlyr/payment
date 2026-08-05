@@ -109,11 +109,6 @@
 
     <script>
         (function () {
-            var POPUP_SEEN_KEY = 'hanifpay-popup-seen';
-            var storage = (function () {
-                try { localStorage.setItem('__t', '1'); localStorage.removeItem('__t'); return localStorage; }
-                catch (e) { return null; }
-            })();
             var btn = document.getElementById('qris-btn');
             var lightbox = document.getElementById('lightbox');
             var closeBtn = document.getElementById('lightbox-close');
@@ -142,7 +137,6 @@
                 popup.classList.add('hidden');
                 popup.classList.remove('flex');
                 document.body.style.overflow = '';
-                if (storage) storage.setItem(POPUP_SEEN_KEY, '1');
                 btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 btn.focus();
             };
@@ -152,18 +146,14 @@
             content.addEventListener('click', closeLightbox);
 
             if (popup && popupBtn) {
-                if (storage && storage.getItem(POPUP_SEEN_KEY)) {
-                    popup.remove();
-                } else {
-                    popup.classList.remove('hidden');
-                    popup.classList.add('flex');
-                    document.body.style.overflow = 'hidden';
-                    popupBtn.focus();
-                    popupBtn.addEventListener('click', closePopup);
-                    popup.addEventListener('click', function (e) {
-                        if (e.target === popup) closePopup();
-                    });
-                }
+                popup.classList.remove('hidden');
+                popup.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+                popupBtn.focus();
+                popupBtn.addEventListener('click', closePopup);
+                popup.addEventListener('click', function (e) {
+                    if (e.target === popup) closePopup();
+                });
             }
 
             document.addEventListener('keydown', function (e) {
