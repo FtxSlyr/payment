@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#09090b">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -16,6 +16,7 @@
                     fontFamily: {
                         body: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
                         display: ['"Space Grotesk"', 'ui-sans-serif', 'sans-serif'],
+                        popup: ['Outfit', 'ui-sans-serif', 'system-ui', 'sans-serif'],
                     },
                 },
             },
@@ -132,16 +133,16 @@
     </div>
 
     <div id="welcome-popup" class="fixed inset-0 z-[60] hidden items-center justify-center bg-zinc-950/80 p-5 backdrop-blur-md" role="dialog" aria-modal="true" aria-label="Pesan sambutan">
-        <div class="w-full max-w-sm animate-fade-up rounded-3xl border border-white/10 bg-[#0e0e12] p-7 text-center shadow-2xl shadow-orange-500/10">
-            <p class="font-display text-lg font-bold leading-snug">Terima kasih telah menggunakan OMU!</p>
-            <div class="mt-5 space-y-2 border-y border-white/10 py-5">
-                <p class="text-lg font-bold">⚡S0 HANIF⚡</p>
-                <p class="text-lg font-bold">🇮🇩BEAT MERAH PUTIH</p>
-                <p class="text-lg font-bold">🛵BG 2770 HAB</p>
+        <div class="w-full max-w-sm animate-fade-up rounded-3xl border border-white/10 bg-[#0e0e12] p-8 text-center font-popup shadow-2xl shadow-orange-500/10">
+            <p class="text-2xl font-bold leading-snug sm:text-[1.7rem]">Terima kasih telah menggunakan OMU!</p>
+            <div class="mt-6 space-y-3 py-6">
+                <p class="text-xl font-bold sm:text-2xl">⚡S0 HANIF⚡</p>
+                <p class="text-xl font-bold sm:text-2xl">🇮🇩BEAT MERAH PUTIH</p>
+                <p class="text-xl font-bold sm:text-2xl">🛵BG 2770 HAB</p>
             </div>
-            <p class="mt-4 text-sm leading-relaxed text-zinc-400">Note : Pembayaran non-tunai ada admin +1k ya, Kak.</p>
+            <p class="mt-5 text-sm leading-relaxed text-zinc-400">Note : Pembayaran non-tunai ada admin +1k ya, Kak.</p>
             <button id="popup-btn"
-                    class="mt-6 inline-flex h-12 w-full items-center justify-center rounded-2xl bg-gradient-to-r from-orange-400/90 via-orange-500/90 to-amber-500/90 text-base font-bold text-white shadow-lg shadow-orange-500/30 ring-1 ring-white/20 backdrop-blur-xl transition duration-300 hover:from-orange-300 hover:via-orange-400 hover:to-amber-400 active:scale-95">
+                    class="mt-7 inline-flex h-14 w-full items-center justify-center rounded-2xl bg-gradient-to-r from-orange-400/90 via-orange-500/90 to-amber-500/90 text-base font-bold text-white shadow-lg shadow-orange-500/30 ring-1 ring-white/20 backdrop-blur-xl transition duration-300 hover:from-orange-300 hover:via-orange-400 hover:to-amber-400 active:scale-95 sm:h-12">
                 Bayar Cashless
             </button>
         </div>
