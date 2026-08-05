@@ -95,27 +95,28 @@
                 <img src="dana logo.png" alt="Dana" class="h-6 w-6 object-contain brightness-0 invert sm:h-6 sm:w-6">
                 Pay with Dana
             </a>
-            <button id="qris-ghost"
-                    class="inline-flex h-14 w-full items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-8 text-lg font-semibold text-zinc-200 backdrop-blur-xl transition duration-300 hover:border-orange-300/50 hover:bg-white/10 hover:text-orange-300 active:scale-95 sm:h-12 sm:w-auto sm:px-9 sm:text-base">
+            <a href="QRIS.jpg" download="QRIS S0 Hanif"
+               class="inline-flex h-14 w-full items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-8 text-lg font-semibold text-zinc-200 backdrop-blur-xl transition duration-300 hover:border-orange-300/50 hover:bg-white/10 hover:text-orange-300 active:scale-95 sm:h-12 sm:w-auto sm:px-9 sm:text-base">
                 <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/>
                 </svg>
-                Pindai QRIS
-            </button>
+                Download QRIS
+            </a>
         </div>
 
+        <p class="reveal -mt-2 text-sm font-semibold text-amber-400/90" style="animation-delay: 0.4s">Note : Pembayaran non-tunai ada admin +1k ya, Kak.</p>
+
         <section class="reveal w-full rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl" style="animation-delay: 0.45s">
-            <p class="text-xs font-bold uppercase tracking-widest text-zinc-400">Didukung oleh</p>
+            <p class="text-sm font-bold uppercase tracking-widest text-zinc-400">Didukung oleh</p>
             <ul class="mt-3 flex flex-wrap items-center justify-center gap-2">
-                <li class="rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-semibold text-zinc-300">DANA</li>
-                <li class="rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-semibold text-zinc-300">GoPay</li>
-                <li class="rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-semibold text-zinc-300">OVO</li>
-                <li class="rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-semibold text-zinc-300">ShopeePay</li>
-                <li class="rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-semibold text-zinc-300">LinkAja</li>
-                <li class="rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-semibold text-zinc-300">Banking Apps</li>
+                <li class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-zinc-300">DANA</li>
+                <li class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-zinc-300">GoPay</li>
+                <li class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-zinc-300">OVO</li>
+                <li class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-zinc-300">ShopeePay</li>
+                <li class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-zinc-300">LinkAja</li>
+                <li class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-zinc-300">Banking Apps</li>
             </ul>
-            <p class="mt-3 text-xs leading-relaxed text-zinc-500">Aplikasi e-wallet atau banking apa pun yang mendukung QRIS dapat memindai kode ini.</p>
-            <p class="mt-2 text-xs font-semibold text-amber-400/90">Note : Pembayaran non-tunai ada admin +1k ya, Kak.</p>
+            <p class="mt-3 text-sm leading-relaxed text-zinc-400">Aplikasi e-wallet atau banking apa pun yang mendukung QRIS dapat memindai kode ini.</p>
         </section>
     </main>
 
@@ -149,7 +150,6 @@
     <script>
         (function () {
             var btn = document.getElementById('qris-btn');
-            var ghost = document.getElementById('qris-ghost');
             var lightbox = document.getElementById('lightbox');
             var closeBtn = document.getElementById('lightbox-close');
             var content = document.getElementById('lightbox-content');
@@ -166,7 +166,6 @@
             };
 
             btn.addEventListener('click', open);
-            ghost.addEventListener('click', open);
             closeBtn.addEventListener('click', close);
             content.addEventListener('click', close);
             document.addEventListener('keydown', function (e) {
