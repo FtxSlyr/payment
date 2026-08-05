@@ -108,6 +108,8 @@
 
     <script>
         (function () {
+            if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+            window.scrollTo(0, 0);
             var btn = document.getElementById('qris-btn');
             var lightbox = document.getElementById('lightbox');
             var closeBtn = document.getElementById('lightbox-close');
