@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment — QRIS</title>
+    <meta name="theme-color" content="#09090b">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        body: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'ui-sans-serif', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-zinc-950 font-body text-zinc-100 antialiased overflow-x-clip;
+            }
+            ::selection {
+                @apply bg-orange-300 text-zinc-950;
+            }
+            a:focus-visible,
+            button:focus-visible {
+                outline: 2px solid #fbbf24;
+                outline-offset: 2px;
+            }
+        }
+    </style>
+    <style>
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        .animate-fade-up {
+            animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+        .js .reveal {
+            opacity: 0;
+        }
+        .js .reveal.is-visible {
+            animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal,
+            .animate-float {
+                animation: none !important;
+                opacity: 1 !important;
+            }
+        }
+    </style>
+    <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="relative min-h-screen">
+    <div class="pointer-events-none fixed inset-0" aria-hidden="true">
+        <img src="anby.png" alt="" class="h-full w-full object-cover object-top blur-[2px]">
+        <div class="absolute inset-0 bg-zinc-950/70"></div>
+    </div>
+    <div class="pointer-events-none fixed inset-0" aria-hidden="true">
+        <div class="absolute -top-32 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-orange-500/20 blur-3xl"></div>
+        <div class="absolute -bottom-40 -right-24 h-[28rem] w-[28rem] rounded-full bg-amber-500/15 blur-3xl"></div>
+        <div class="absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-zinc-300/10 blur-3xl"></div>
+    </div>
+
+    <main class="relative mx-auto flex min-h-screen w-full max-w-md flex-col items-center gap-8 px-5 pb-12 pt-10 text-center sm:max-w-lg sm:gap-10 sm:py-14">
+        <header class="reveal flex flex-col items-center gap-3">
+            <p class="rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-orange-300 backdrop-blur">Payment</p>
+            <h1 class="font-display text-3xl font-bold leading-tight sm:text-4xl">Pindai untuk Bayar <span class="bg-gradient-to-r from-orange-300 via-amber-400 to-orange-500 bg-clip-text text-transparent">dengan QRIS</span></h1>
+        </header>
+
+        <button id="qris-btn" class="reveal group animate-float outline-none" style="animation-delay: 0.15s" aria-label="Buka QRIS dalam ukuran penuh" aria-haspopup="dialog">
+            <img src="QRIS.jpg" alt="Kode pembayaran QRIS"
+                 class="w-[78vw] max-w-sm aspect-[420/592] rounded-[28px] object-cover shadow-2xl shadow-orange-500/20 ring-1 ring-white/10 transition duration-300 group-hover:scale-[1.03] group-hover:shadow-orange-400/40 group-active:scale-95 sm:h-80 sm:w-auto">
+        </button>
+
+        <div class="reveal flex w-full flex-col items-center gap-3 sm:flex-row sm:justify-center" style="animation-delay: 0.3s">
+            <a href="https://link.dana.id/minta?full_url=https://qr.dana.id/v1/281012012022051581170663" target="_blank" rel="noopener"
+               class="inline-flex h-14 w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-sky-400/90 via-sky-500/90 to-sky-600/90 px-8 text-lg font-bold text-white shadow-lg shadow-sky-500/30 ring-1 ring-white/20 backdrop-blur-xl transition duration-300 hover:from-sky-300 hover:via-sky-400 hover:to-sky-500 hover:shadow-sky-400/40 active:scale-95 sm:h-12 sm:w-auto sm:px-9 sm:text-base">
+                <img src="dana logo.png" alt="Dana" class="h-6 w-6 object-contain brightness-0 invert sm:h-6 sm:w-6">
+                Pay with Dana
+            </a>
+            <button id="qris-ghost"
+                    class="inline-flex h-14 w-full items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-8 text-lg font-semibold text-zinc-200 backdrop-blur-xl transition duration-300 hover:border-orange-300/50 hover:bg-white/10 hover:text-orange-300 active:scale-95 sm:h-12 sm:w-auto sm:px-9 sm:text-base">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"/>
+                </svg>
+                Pindai QRIS
+            </button>
+        </div>
+
+        <section class="reveal w-full rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl" style="animation-delay: 0.45s">
+            <p class="text-xs font-bold uppercase tracking-widest text-zinc-400">Didukung oleh</p>
+            <ul class="mt-3 flex flex-wrap items-center justify-center gap-2">
+                <li class="rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-semibold text-zinc-300">DANA</li>
+                <li class="rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-semibold text-zinc-300">GoPay</li>
+                <li class="rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-semibold text-zinc-300">OVO</li>
+                <li class="rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-semibold text-zinc-300">ShopeePay</li>
+                <li class="rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-semibold text-zinc-300">LinkAja</li>
+                <li class="rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-semibold text-zinc-300">Banking Apps</li>
+            </ul>
+            <p class="mt-3 text-xs leading-relaxed text-zinc-500">Aplikasi e-wallet atau banking apa pun yang mendukung QRIS dapat memindai kode ini.</p>
+            <p class="mt-2 text-xs font-semibold text-amber-400/90">Note : Pembayaran non-tunai ada admin +1k ya, Kak.</p>
+        </section>
+    </main>
+
+    <div id="lightbox" class="fixed inset-0 z-50 hidden bg-zinc-950/95 backdrop-blur-sm" role="dialog" aria-modal="true" aria-label="QRIS ukuran penuh">
+        <button id="lightbox-close" class="fixed right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-zinc-900/90 text-zinc-200 ring-1 ring-white/10 transition hover:text-orange-300 active:scale-90 sm:right-6 sm:top-6" aria-label="Tutup tampilan ukuran penuh">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+        <div id="lightbox-content" class="flex h-full w-full items-center justify-center p-4 sm:p-8">
+            <img id="lightbox-img" src="QRIS.jpg" alt="Kode pembayaran QRIS ukuran penuh" class="max-h-full max-w-full rounded-2xl object-contain shadow-2xl">
+        </div>
+    </div>
+
+    <div id="welcome-popup" class="fixed inset-0 z-[60] hidden items-center justify-center bg-zinc-950/80 p-5 backdrop-blur-md" role="dialog" aria-modal="true" aria-label="Pesan sambutan">
+        <div class="w-full max-w-sm animate-fade-up rounded-3xl border border-white/10 bg-[#0e0e12] p-7 text-center shadow-2xl shadow-orange-500/10">
+            <p class="font-display text-lg font-bold leading-snug">Terima kasih telah menggunakan OMU!</p>
+            <div class="mt-5 space-y-2 border-y border-white/10 py-5">
+                <p class="text-lg font-bold">⚡S0 HANIF⚡</p>
+                <p class="text-lg font-bold">🇮🇩BEAT MERAH PUTIH</p>
+                <p class="text-lg font-bold">🛵BG 2770 HAB</p>
+            </div>
+            <p class="mt-4 text-sm leading-relaxed text-zinc-400">Note : Pembayaran non-tunai ada admin +1k ya, Kak.</p>
+            <button id="popup-btn"
+                    class="mt-6 inline-flex h-12 w-full items-center justify-center rounded-2xl bg-gradient-to-r from-orange-400/90 via-orange-500/90 to-amber-500/90 text-base font-bold text-white shadow-lg shadow-orange-500/30 ring-1 ring-white/20 backdrop-blur-xl transition duration-300 hover:from-orange-300 hover:via-orange-400 hover:to-amber-400 active:scale-95">
+                Bayar Cashless
+            </button>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var btn = document.getElementById('qris-btn');
+            var ghost = document.getElementById('qris-ghost');
+            var lightbox = document.getElementById('lightbox');
+            var closeBtn = document.getElementById('lightbox-close');
+            var content = document.getElementById('lightbox-content');
+
+            var open = function () {
+                lightbox.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                closeBtn.focus();
+            };
+            var close = function () {
+                lightbox.classList.add('hidden');
+                document.body.style.overflow = '';
+                btn.focus();
+            };
+
+            btn.addEventListener('click', open);
+            ghost.addEventListener('click', open);
+            closeBtn.addEventListener('click', close);
+            content.addEventListener('click', close);
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) close();
+            });
+
+            var popup = document.getElementById('welcome-popup');
+            var popupBtn = document.getElementById('popup-btn');
+            if (popup && popupBtn) {
+                popup.classList.remove('hidden');
+                popup.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+                popupBtn.addEventListener('click', function () {
+                    popup.classList.add('hidden');
+                    popup.classList.remove('flex');
+                    document.body.style.overflow = '';
+                    document.getElementById('qris-btn').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                });
+            }
+
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.documentElement.classList.remove('js');
+            } else {
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            io.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+            }
+        })();
+    </script>
+</body>
+</html>
